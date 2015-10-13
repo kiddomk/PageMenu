@@ -113,7 +113,8 @@ public class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureReco
     public var bottomMenuHairlineColor : UIColor = UIColor.whiteColor()
     public var menuItemSeparatorColor : UIColor = UIColor.lightGrayColor()
     
-    public var menuItemFont : UIFont = UIFont.systemFontOfSize(15.0)
+    public var unselectedMenuItemFont : UIFont = UIFont.systemFontOfSize(15.0)
+    public var selectedMenuItemFont : UIFont = UIFont.systemFontOfSize(16.0)
     public var menuItemSeparatorPercentageHeight : CGFloat = 0.2
     public var menuItemSeparatorWidth : CGFloat = 0.5
     public var menuItemSeparatorRoundEdges : Bool = false
@@ -384,10 +385,11 @@ public class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureReco
             }
             
             // Configure menu item label font if font is set by user
-            menuItemView.titleLabel!.font = menuItemFont
+                menuItemView.titleLabel!.font = selectedMenuItemFont
             
             menuItemView.titleLabel!.textAlignment = NSTextAlignment.Center
             menuItemView.titleLabel!.textColor = unselectedMenuItemLabelColor
+                menuItemView.titleLabel!.font = unselectedMenuItemFont
             
             // Set title depending on if controller has a title set
             if controller.title != nil {
@@ -419,6 +421,7 @@ public class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureReco
         if menuItems.count > 0 {
             if menuItems[currentPageIndex].titleLabel != nil {
                 menuItems[currentPageIndex].titleLabel!.textColor = selectedMenuItemLabelColor
+                menuItems[currentPageIndex].titleLabel!.font = selectedMenuItemFont
             }
         }
         
@@ -708,6 +711,8 @@ public class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureReco
                 if self.menuItems.count > 0 {
                     if self.menuItems[self.lastPageIndex].titleLabel != nil && self.menuItems[self.currentPageIndex].titleLabel != nil {
                         self.menuItems[self.lastPageIndex].titleLabel!.textColor = self.unselectedMenuItemLabelColor
+                        self.menuItems[self.lastPageIndex].titleLabel!.font = self.unselectedMenuItemFont
+                        self.menuItems[self.currentPageIndex].titleLabel!.font = self.selectedMenuItemFont
                         self.menuItems[self.currentPageIndex].titleLabel!.textColor = self.selectedMenuItemLabelColor
                     }
                 }
