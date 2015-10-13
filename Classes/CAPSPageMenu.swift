@@ -71,7 +71,8 @@ public enum CAPSPageMenuOption {
     case UnselectedMenuItemLabelColor(UIColor)
     case UseMenuLikeSegmentedControl(Bool)
     case MenuItemSeparatorRoundEdges(Bool)
-    case MenuItemFont(UIFont)
+    case UnselectedMenuItemFont(UIFont)
+    case SelectedMenuItemFont(UIFont)
     case MenuItemSeparatorPercentageHeight(CGFloat)
     case MenuItemWidth(CGFloat)
     case EnableHorizontalBounce(Bool)
@@ -198,8 +199,10 @@ public class CAPSPageMenu: UIViewController, UIScrollViewDelegate, UIGestureReco
                     useMenuLikeSegmentedControl = value
                 case let .MenuItemSeparatorRoundEdges(value):
                     menuItemSeparatorRoundEdges = value
-                case let .MenuItemFont(value):
-                    menuItemFont = value
+                case let .UnselectedMenuItemFont(value):
+                    unselectedMenuItemFont = value
+                case let .SelectedMenuItemFont(value):
+                    selectedMenuItemFont = value
                 case let .MenuItemSeparatorPercentageHeight(value):
                     menuItemSeparatorPercentageHeight = value
                 case let .MenuItemWidth(value):
